@@ -1,0 +1,181 @@
+{% load static %}
+<!DOCTYPE html>
+	<html lang="es">
+
+	  <head>
+
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	    <title>Elkin Alvia</title>
+
+	    <!-- Estilos y fuentes del template  -->
+	    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+	    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+	    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+	    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+	    <link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
+
+	  </head>
+
+	  <body>
+
+	    <!-- Navegación -->
+	    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+	      <div class="container">
+	        <a class="navbar-brand" href={% url 'index' %}>Elkin Alvia</a>
+	        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+	          Menú
+	          <i class="fa fa-bars"></i>
+	        </button>
+	        <div class="collapse navbar-collapse" id="navbarResponsive">
+	          <ul class="navbar-nav ml-auto">
+	            <li class="nav-item">
+	              <a class="nav-link" href={% url 'index' %}>Portada</a>
+	            </li>
+	            <li class="nav-item">
+	              <a class="nav-link" href={% url 'about' %}>Acerca de</a>
+	            </li>
+	            <li class="nav-item">
+	              <a class="nav-link" href={% url 'portfolio' %}>Portafolio</a>
+	            </li>
+	            <li class="nav-item">
+	              <a class="nav-link" href={% url 'contact' %}>Contacto</a>
+	            </li>
+	          </ul>
+	        </div>
+	      </div>
+	    </nav>
+
+	    <!-- Cabecera -->
+	    <header class="masthead" style="background-image: url({% static 'img/portfolio-bg.jpg' %}); height: 100vh;">
+	      <div class="overlay"></div>
+	      <div class="container">
+	        <div class="row">
+	          <div class="col-lg-8 col-md-10 mx-auto">
+	            <div class="site-heading">
+	              <h1>Portafolio</h1>
+	              <span class="subheading">Currículo</span>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </header>
+
+	    <!-- Contenido Principal -->
+	      <!-- Proyecto -->
+        <div id = "base">
+            {% for proyectos in proyecto %}
+	                <div class = "content" id = "proyectos">
+                         <a href="{{ proyectos.link }}"><img src="{{ proyectos.img.url}}"  alt="aqui debe de ir una imagen"></a>
+                         <div id = "contenido">
+                             <h5>{{ proyectos.title }}</h5>
+                             <p id = "descripcion">{{ proyectos.description }}</p>
+                             <p id = "autores">{{ proyectos.author }}</p>
+                         </div>
+                    </div>
+                <style>
+                   #proyectos{
+                       height: 300px;
+                       width: 80%;
+                       margin-left: 130px;
+                       display: flex;
+                       flex-direction: row;
+                       align-items: center;
+                       justify-content: center;
+                       position: relative;
+                       border-radius: 25px;
+                       background-color: #eaeaea;
+                       margin-bottom: 30px;
+                   }
+                   a {
+                       display: flex;
+                       align-items: center;
+                       height: 100%;
+                       width: 30%;
+                   }
+
+                   img {
+                       width: 80%;
+                       height: 100%;
+                       border-radius: 25px;
+                       object-fit: cover;
+                   }
+                   #contenido{
+                       height: 100%;
+                       margin: 10px;
+                       width: 70%;
+                       display: flex;
+                       flex-direction: column;
+                       align-items: center;
+                       justify-content: center;
+                   }
+
+                   h5 {
+                       height: 25px;
+                       color: #d6c8fa;
+                   }
+                   #descripcion{
+                       height: 75%;
+                       width: 100%;
+                   }
+                   #autores{
+                       height: 10%;
+                   }
+                </style>
+             {% endfor %}
+
+        <style>
+
+            #base {
+                    display: flex;
+                    flex-direction: column-reverse;
+                }
+        </style>
+        </div>
+	    <!-- Pié de página -->
+	    <footer>
+	    	<hr>
+	      <div class="container">
+	        <div class="row">
+	          <div class="col-lg-8 col-md-10 mx-auto">
+	            <ul class="list-inline text-center">
+               <li class="list-inline-item">
+                 <a href="#">
+                   <span class="fa-stack fa-lg">
+                     <i class="fa fa-circle fa-stack-2x"></i>
+                     <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                   </span>
+                 </a>
+               </li>
+               <li class="list-inline-item">
+                 <a href="#">
+                   <span class="fa-stack fa-lg">
+                     <i class="fa fa-circle fa-stack-2x"></i>
+                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                   </span>
+                 </a>
+               </li>
+               <li class="list-inline-item">
+                 <a href="#">
+                   <span class="fa-stack fa-lg">
+                     <i class="fa fa-circle fa-stack-2x"></i>
+                     <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+                   </span>
+                 </a>
+               </li>
+             </ul>
+             <p class="copyright text-muted">Copyright &copy; 2026 · Elkin Alvia (Estudiante de TICs) </p>
+	          </div>
+	        </div>
+	      </div>
+	    </footer>
+
+	    <!-- Bootstrap y Javascripts -->
+	    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+	    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+	    <script src="{% static 'js/clean-blog.min.js' %}"></script>
+
+	</body>
+
+</html>
